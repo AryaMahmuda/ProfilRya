@@ -1,0 +1,564 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    background-color: #213448;
+    user-select: none;
+}
+
+.lisnav {
+    font-size: 1.1rem;
+}
+
+/**====BATAS====**/
+
+nav {
+    height: 12vh;
+    background-color: #213448;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.links-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+}
+
+nav a {
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-indent: 2vh;
+    color: #ecefca;
+    text-align: left;
+}
+
+#sidebar-active {
+    display: none;
+}
+
+.open-sidebar-button,
+.close-sidebar-button {
+    display: none;
+}
+
+#iconnav {
+    display: none;
+}
+
+.lisnav:hover {
+    color: #fff956;
+    scale: 1.1;
+    transition: scale 0.1s ease-in-out;
+    border: 20px 0px 20px 0px solid #ffffff;
+}
+
+.Arya {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ecefca;
+    margin-right: auto;
+}
+
+.A {
+    display: none;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ecefca;
+    margin-right: auto;
+    margin-left: 3vh;
+}
+
+.blink {
+    animation: blink-animation 1s steps(2, start) infinite;
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #21344892;
+        backdrop-filter: blur(10px);
+    }
+/* Tambahkan di luar media query atau di dalam jika hanya berlaku saat <=650px */
+#main-nav.nav-solid {
+    backdrop-filter: none;
+    background-color: #20374b !important;
+}
+
+@media (max-width: 650px) {
+    #iconnav {
+        display: block;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #21344892;
+        backdrop-filter: blur(10px);
+    }
+
+    .links-container {
+        background-color: #20374b;
+        box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+        transition: 0.75s ease-out;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 300px;
+    }
+
+    .lisnav {
+        font-size: 1.3rem;
+        color: #ecefca;
+        margin: 0;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: left;
+        font-weight: 700;
+        margin-right: 8px;
+        margin-bottom: 2vh;
+    }
+
+    /* TOMBOL ANIMASI NAVIGASI "BURGER" KE "X" */
+    .open-sidebar-button {
+        cursor: pointer;
+        padding: 20px;
+        display: inline-block;
+        z-index: 20;
+    }
+
+    .hamburger {
+        width: 25px;
+        height: 24px;
+        position: relative;
+    }
+
+    .hamburger span {
+        height: 3.4px;
+        width: 100%;
+        background-color: #ecefca;
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        transition: 0.4s ease;
+    }
+
+    .hamburger span:nth-child(1) {
+        top: 0;
+    }
+
+    .hamburger span:nth-child(2) {
+        top: 10px;
+    }
+
+    .hamburger span:nth-child(3) {
+        top: 20px;
+    }
+
+    /* Animate to X when checked */
+    #sidebar-active:checked+label .hamburger span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 10px;
+    }
+
+    #sidebar-active:checked+label .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #sidebar-active:checked+label .hamburger span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 10px;
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        position: fixed;
+        top: 0;
+        right: -250px;
+        transition: right 0.4s ease;
+        padding: 20px;
+        color: #ecefca;
+    }
+
+    #sidebar-active:checked~.sidebar {
+        right: 0;
+    }
+
+    /* ANIMASI KE X NYA */
+    #sidebar-active:checked+label .hamburger span:nth-child(1) {
+        transform: rotate(45deg) scale(1.3);
+        top: 10px;
+    }
+
+    #sidebar-active:checked+label .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #sidebar-active:checked+label .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) scale(1.3);
+        top: 10px;
+    }
+
+    #sidebar-active:checked~.links-container {
+        right: 0;
+    }
+
+    #sidebar-active:checked~#overlay {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+    .A {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ecefca;
+        margin-right: auto;
+        margin-left: 1vh;
+    }
+
+    .Arya {
+        display: none;
+    }
+
+    nav a {
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-end;
+    }
+
+    .open-sidebar-button,
+    .close-sidebar-button {
+        padding: 20px;
+        display: block;
+        margin-right: 2vh;
+    }
+
+    .close-sidebar-button {
+        margin-bottom: 5vh;
+    }
+}
+
+/*========BATAS NAV DAN PAGE1========= */
+/*========BATAS NAV DAN PAGE1========= */
+/*========BATAS NAV DAN PAGE1========= */
+
+.p1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #365269;
+    padding: 2rem;
+    min-height: 88vh;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-inline: 8vh;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.fotomuka {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+.div1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.div2 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 0;
+}
+
+.Sub1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ecefca;
+    margin: 0;
+    text-align: left;
+}
+
+.Sub2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 600;
+    color: #ecefca;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.Sub2>span {
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    color: #fff956;
+    height: 2.2rem;
+    overflow: hidden;
+    top: 5px;
+    text-align: left;
+}
+
+.Sub2>span>span {
+    display: block;
+    animation: animateWord 7s infinite ease;
+}
+
+.Sub2>span>span>span {
+    display: block;
+    height: 3.25rem;
+}
+
+@keyframes animateWord {
+    0% {
+        transform: translateY(0%);
+    }
+
+    25% {
+        transform: translateY(-100%);
+    }
+
+    50% {
+        transform: translateY(-200%);
+    }
+
+    75% {
+        transform: translateY(-300%);
+    }
+
+    100% {
+        transform: translateY(-400%);
+    }
+}
+
+.garis {
+    margin: 1rem 0;
+    border: none;
+    height: 1px;
+    display: none;
+    background-color: #ecefca;
+}
+
+/* Responsif untuk layar <= 768px (tablet & mobile) */
+@media (max-width: 650px) {
+    .garis {
+        display: block;
+    }
+
+    .parent {
+        grid-template-columns: 1fr;
+        text-align: center;
+        margin-top: -4vh;
+        gap: 2rem;
+    }
+
+    .Sub1,
+    .Sub2 {
+        text-align: center;
+    }
+
+    .Sub1 {
+        font-size: 2rem;
+        text-align: left;
+        font-weight: 800;
+    }
+
+    .snama {
+        text-align: left;
+        font-size: 1.5rem;
+    }
+
+    .Sub2 {
+        margin-top: -0.5px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .Sub2>span>span {
+        height: 2.7rem;
+    }
+
+    .fotomuka {
+        border-radius: 3rem;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+.boxicon {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.icon-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.boxbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    color: white;
+    font-size: 18px;
+    width: 200px;
+    height: 55px;
+    font-weight: bold;
+    border: none;
+    background-color: #107d91;
+    border-radius: 10px;
+    /**box-shadow: 5px 5px 0px 0px #213448;**/
+}
+
+.btn:hover {
+    box-shadow: 0 0 #333;
+    color: #fff;
+    background-color: #213448;
+    transition: 0.3s;
+    box-shadow: 5px 5px 0px 0px rgb(14, 134, 155);
+}
+
+.icon1 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: fill 0.3s ease;
+    border-radius: 50%;
+}
+
+.icon2 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: fill 0.3s ease;
+    border-radius: 8px;
+}
+
+.icon3 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: fill 0.3s ease;
+    border-radius: 15px;
+}
+
+.icon4 {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: fill 0.3s ease;
+    border-radius: 50%;
+}
+
+.icon1:hover,
+.icon2:hover,
+.icon3:hover,
+.icon4:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.icon1:hover {
+    background-color: #010409;
+}
+
+.icon2:hover {
+    background-color: #136bc5;
+}
+
+.icon3:hover {
+    background-image: linear-gradient(to left bottom,
+            #e850c8,
+            #ff528c,
+            #ff844e,
+            #ffbd14,
+            #c8ee39);
+}
+
+.icon4:hover {
+    background-color: rgb(86, 176, 86);
+}
+
+@media (max-width: 600px) {
+    .boxicon {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        flex-direction: row;
+    }
+}
+
+.p2 {
+    height: 100vh;
+    display: flex;
+    background-color: #7dbdb2;
+}
