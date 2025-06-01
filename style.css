@@ -141,6 +141,9 @@ nav a {
     display: none;
 }
 @media (max-width: 650px) {
+    /* -------------------------
+       NAVBAR UTAMA
+       ------------------------- */
     nav {
         height: 12vh;
         background-color: #21344892;
@@ -153,28 +156,109 @@ nav a {
         backdrop-filter: blur(10px);
     }
 
-    .iconnav {
+    /* =========================
+       1) LOGO “A” tetap di kiri
+       ========================= */
+    .A {
         display: block;
-        margin-left: 10px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ecefca;
+        margin-right: auto;
+        margin-left: 1vh;
     }
 
-    /* LINKS CONTAINER - tersembunyi di luar layar */
-    .links-container {
-        background-color: #20374b;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-        transition: right 0.4s ease-in-out;
+    .Arya {
+        display: none; /* hide versi “Arya” di mobile */
+    }
+
+    /* -------------------------
+       2) BURGER BUTTON (HAMBURGER ↔ X)
+       ------------------------- */
+    /* Checkbox (tersembunyi) */
+    #sidebar-active {
+        /* hidden sudah di HTML */
+    }
+
+    /* Label sebagai tombol burger */
+    .open-sidebar-button {
+        cursor: pointer;
+        padding: 20px;
+        display: inline-block;
+        margin-right: 2vh;
+        z-index: 20;
+        position: relative;
+    }
+
+    .hamburger {
+        width: 30px;
+        height: 24px;
+        display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    .hamburger span {
+        height: 3px;
+        width: 100%;
+        background-color: #ecefca;
+        border-radius: 2px;
+        transition: 0.4s ease;
+    }
+
+    /* Animasi ubah Hamburger → X ketika dicentang */
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* -------------------------
+       3) OVERLAY (Latar Gelap di Belakang)
+       ------------------------- */
+    #overlay {
+        display: none;                  /* default: sembunyikan */
         position: fixed;
         top: 0;
-        right: -280px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9;
+    }
+    /* Ketika hamburger dicentang → munculkan overlay */
+    #sidebar-active:checked ~ #overlay {
+        display: block;
+    }
+
+    /* -------------------------
+       4) LINKS-CONTAINER (Menu Samping)
+       ------------------------- */
+    .links-container {
+        display: none;                  /* default: sembunyikan seluruhnya */
+        background-color: #20374b;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        right: 0;
         z-index: 10;
         width: 280px;
-        height: 100vh;
+        height: 100vh;                  /* penuh ke bawah */
+        flex-direction: column;
+        align-items: flex-end;
         justify-content: flex-start;
         padding-top: 80px;
     }
+    /* Ketika hamburger dicentang → display: flex (munculkan) */
+    #sidebar-active:checked ~ .links-container {
+        display: flex;
+    }
 
+    /* Tautan di dalam .links-container */
     .lisnav {
         font-size: 1.3rem;
         color: #ecefca;
@@ -189,81 +273,13 @@ nav a {
         align-items: center;
     }
 
+    /* Icon di sebelah tulisan */
     #iconnav {
         display: block;
+        margin-left: 10px; /* jika ingin jarak ikon */
     }
 
-    /* OVERLAY - sembunyi default */
-    #overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9;
-    }
-
-    /* BURGER BUTTON */
-    .open-sidebar-button {
-        cursor: pointer;
-        padding: 20px;
-        display: inline-block;
-        z-index: 20;
-        position: relative;
-        margin-right: 2vh;
-    }
-
-    .hamburger {
-        width: 30px;
-        height: 24px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .hamburger span {
-        height: 3px;
-        width: 100%;
-        background-color: #ecefca;
-        border-radius: 2px;
-        transition: 0.4s ease;
-    }
-
-    /* Animasi Ubah Hamburger → X */
-    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    /* Saat dicentang: munculkan menu dan overlay */
-    #sidebar-active:checked ~ .links-container {
-        right: 0;
-    }
-    #sidebar-active:checked ~ #overlay {
-        display: block;
-    }
-
-    .A {
-        display: block;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #ecefca;
-        margin-right: auto;
-        margin-left: 1vh;
-    }
-
-    .Arya {
-        display: none;
-    }
-
+    /* Semua <a> di dalam nav di mobile, agar full-width */
     nav a {
         box-sizing: border-box;
         height: auto;
