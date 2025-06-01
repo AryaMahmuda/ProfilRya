@@ -140,18 +140,16 @@ nav a {
 #iconnav {
     display: none;
 }
-
 @media (max-width: 650px) {
     nav {
         height: 12vh;
-        background-color: #213448;
+        background-color: #21344892;
         display: flex;
         justify-content: flex-end;
         align-items: center;
         position: sticky;
         top: 0;
         z-index: 100;
-        background-color: #21344892;
         backdrop-filter: blur(10px);
     }
 
@@ -160,21 +158,21 @@ nav a {
         margin-left: 10px;
     }
 
+    /* LINKS CONTAINER - tersembunyi di luar layar */
     .links-container {
         background-color: #20374b;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-        transition: transform 0.4s ease-in-out;
+        transition: right 0.4s ease-in-out;
         flex-direction: column;
         align-items: flex-end;
         position: fixed;
         top: 0;
-        right: 0;
+        right: -280px;
         z-index: 10;
         width: 280px;
         height: 100vh;
         justify-content: flex-start;
         padding-top: 80px;
-        transform: translateX(100%);
     }
 
     .lisnav {
@@ -195,13 +193,26 @@ nav a {
         display: block;
     }
 
-    /* TOMBOL ANIMASI NAVIGASI "BURGER" KE "X" */
+    /* OVERLAY - sembunyi default */
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9;
+    }
+
+    /* BURGER BUTTON */
     .open-sidebar-button {
         cursor: pointer;
         padding: 20px;
         display: inline-block;
         z-index: 20;
         position: relative;
+        margin-right: 2vh;
     }
 
     .hamburger {
@@ -221,26 +232,22 @@ nav a {
         transition: 0.4s ease;
     }
 
-    /* Animate to X when checked */
-    #sidebar-active:checked+.open-sidebar-button .hamburger span:nth-child(1) {
+    /* Animasi Ubah Hamburger → X */
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(1) {
         transform: rotate(51deg) translate(7px, 7px);
-        width: 30px;
     }
-
-    #sidebar-active:checked+.open-sidebar-button .hamburger span:nth-child(2) {
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(2) {
         opacity: 0;
     }
-
-    #sidebar-active:checked+.open-sidebar-button .hamburger span:nth-child(3) {
+    #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(3) {
         transform: rotate(-51deg) translate(7px, -7px);
-        width: 30px;
     }
 
-    #sidebar-active:checked~.links-container {
-        transform: translateX(0);
+    /* Saat dicentang: munculkan menu dan overlay */
+    #sidebar-active:checked ~ .links-container {
+        right: 0;
     }
-
-    #sidebar-active:checked~#overlay {
+    #sidebar-active:checked ~ #overlay {
         display: block;
     }
 
@@ -264,25 +271,8 @@ nav a {
         padding: 15px 30px;
         justify-content: flex-start;
     }
-
-    .open-sidebar-button {
-        padding: 20px;
-        display: block;
-        margin-right: 2vh;
-        z-index: 20;
-    }
-
-    .close-sidebar-button {
-        display: block;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        color: #ecefca;
-        font-size: 2rem;
-        cursor: pointer;
-        z-index: 11;
-    }
 }
+
 
 .p1 {
     display: grid;
@@ -319,6 +309,7 @@ nav a {
     align-items: center;
     justify-content: center;
     position: relative;
+    
 }
 
 .div2 {
