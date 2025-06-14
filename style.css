@@ -1,113 +1,36 @@
+:root {
+    --primary-color: #001f3f;
+    --secondary-color: #ead8b1;
+    --hover-color: #11101b;
+}
+
 * {
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #1a2a3a, #2c3e50);
-    min-height: 100vh;
-    color: #ecefca;
-    overflow-x: hidden;
+    background-color: #fefefe;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.content {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 30px;
-    margin-top: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #fff956;
-    text-align: center;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
-.lisnav {
-    font-size: 1.3rem;
-}
-
-nav {
-    height: 12vh;
-    background-color: #213448;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: #21344892;
-    backdrop-filter: blur(10px);
-}
-
-.links-container {
-    height: 100%;
+header {
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-nav a {
-    height: 100%;
-    padding: 0 20px;
+    height: 80px;
+    background: #001f3f;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-indent: 2vh;
-    color: #ecefca;
-    text-align: left;
-    transition: all 0.3s ease;
+    justify-content: space-between;
+    padding: 0 100px;
 }
 
-#sidebar-active {
-    display: none;
-}
-
-.open-sidebar-button,
-.close-sidebar-button {
-    display: none;
-}
-
-.lisnav:hover {
-    color: #fff956;
-    scale: 1.1;
-    transition: scale 0.1s ease-in-out;
-}
-
-.Arya {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #ecefca;
-    margin-right: auto;
-    padding-left: 30px;
-}
-
-.A {
-    display: none;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #ecefca;
-    margin-right: auto;
-    margin-left: 3vh;
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fefefe;
 }
 
 .blink {
@@ -120,192 +43,140 @@ nav a {
     }
 }
 
-#main-nav.nav-solid {
-    backdrop-filter: none;
-    background-color: #20374b !important;
+.hamburger {
+    display: none;
+    scale: 0.7;
 }
 
-/* Overlay style */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 8;
-    display: none;
+.nav-bar ul {
+    display: flex;
+}
+
+.nav-bar ul li a {
+    display: block;
+    color: #fefefe;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.2s;
+    margin: 0 5px;
 }
 
 #iconnav {
     display: none;
 }
-@media (max-width: 650px) {
-  /* ===============================
-     NAVBAR UTAMA
-     =============================== */
-  nav {
-    height: 12vh;
-    background-color: #21344892;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-  }
 
-  /* -------------------------------
-     1) Logo “A” di kiri
-     ------------------------------- */
-  .A {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #ecefca;
-    margin-right: auto;
-    margin-left: 1vh;
-  }
-  .Arya {
-    display: none; /* sembunyikan varian “Arya” di mobile */
-  }
-
-  /* -------------------------------
-     2) Checkbox (tersembunyi)
-     ------------------------------- */
-  #sidebar-active {
-    /* sudah hidden di HTML */
-  }
-
-  /* -------------------------------
-     3) Tombol Burger (Hamburger ↔ X)
-     ------------------------------- */
-  .open-sidebar-button {
-    cursor: pointer;
-    padding: 20px;
-    display: inline-block;
-    margin-right: 2vh;
-    z-index: 20;
-    position: relative;
-  }
-
-  .hamburger {
-    width: 30px;
-    height: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .hamburger span {
-    height: 3px;
-    width: 100%;
-    background-color: #ecefca;
-    border-radius: 2px;
-    transition: 0.4s ease;
-  }
-
-  /* Animasi ubah Hamburger → X */
-  #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(2) {
-    opacity: 0;
-  }
-  #sidebar-active:checked + .open-sidebar-button .hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-
-  /* -------------------------------
-     4) Overlay (latar gelap di belakang)
-     ------------------------------- */
-  #overlay {
-    display: none; /* sembunyikan default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9;
-    /* (Opsional) Jika ingin klik overlay menutup menu, bisa diganti menjadi <label for="sidebar-active" id="overlay"></label> di HTML. */
-  }
-
-  /* Tampilkan overlay hanya jika checkbox dicentang */
-  #sidebar-active:checked ~ #overlay {
-    display: block;
-  }
-
-  /* -------------------------------
-     5) Links-Container (Sidebar Menu)
-     ------------------------------- */
-  .links-container {
-    position: fixed;
-    top: 0;
-    right: -280px;           /* off-screen di luar kanan */
-    width: 280px;
-    height: 100vh;           /* penuh tinggi layar */
-    background-color: #20374b;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding-top: 80px;
-    z-index: 10;
-    transition: right 0.4s ease-in-out;  /* animasi slide */
-  }
-
-  /* Saat checkbox dicentang: slide in ke right: 0 */
-  #sidebar-active:checked ~ .links-container {
-    right: 0;
-  }
-
-  /* ------------ 
-     Daftar tautan di dalam menu
-     ------------ */
-  .lisnav {
-    font-size: 1.3rem;
-    color: #ecefca;
-    margin: 0;
-    padding: 15px 30px;
-    width: 100%;
-    text-align: right;
-    font-weight: 700;
-    margin-bottom: 2vh;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  /* Tampilkan ikon di dalam tautan */
-  #iconnav {
-    display: block;
-    margin-left: 10px; /* beri jarak antara teks dan ikon */
-  }
-
-  /* Pastikan semua <a> dalam <nav> memenuhi lebar penuh pada mobile */
-  nav a {
-    box-sizing: border-box;
-    height: auto;
-    width: 100%;
-    padding: 15px 30px;
-    justify-content: flex-start;
-  }
+.nav-bar ul li a:hover {
+    color: #11101b;
+    background: #fefefe;
 }
 
-
-.p1 {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    background-color: #365269;
-    padding: 2rem;
-    min-height: 88vh;
+.nav-bar ul li a.active {
+    color: #11101b;
+    background: #fefefe;
 }
 
-.parent {
+@media only screen and (max-width: 1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        width: 35px;
+        height: 5px;
+        background: #fefefe;
+        margin: 8px 0;
+        border-radius: 3px;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+            opacity 0.3s ease;
+    }
+
+    .hamburger.active .line:nth-child(1) {
+        transform: translateY(13px) rotate(45deg);
+    }
+
+    .hamburger.active .line:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .hamburger.active .line:nth-child(3) {
+        transform: translateY(-13px) rotate(-45deg);
+    }
+
+    .nav-bar ul li a:hover {
+        color: #fefefe;
+        scale: 1.1;
+        transition: scale 0.1s ease-in-out;
+        background: none;
+    }
+
+    .nav-bar ul li a.active {
+        background: #fefefe;
+        color: #001f3f;
+    }
+
+    #iconnav {
+        display: block;
+        margin-left: 1.5vh;
+    }
+
+    .nav-bar {
+        height: 0;
+        display: block;
+        text-align: right;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: #001f3f;
+        transition: 0.5s;
+        overflow: hidden;
+    }
+
+    .nav-bar.active {
+        height: 300px;
+        z-index: 1;
+    }
+
+    .nav-bar ul {
+        color: #ead8b1;
+        display: block;
+        width: fit-content;
+        margin: 20px 18px 0 auto;
+        text-align: right;
+        transition: 0.5s;
+        opacity: 0;
+    }
+
+    .nav-bar.active ul {
+        opacity: 1;
+    }
+
+    .nav-bar ul li a {
+        display: inline-flex;
+        margin-bottom: 3vh;
+    }
+}
+
+/* =======BATAS NAV DAN S1========= */
+
+.hero {
+    background-color: #3A6D8C;
     display: flex;
     flex-wrap: wrap-reverse;
     width: 100%;
@@ -314,25 +185,35 @@ nav a {
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-
-.fotomuka {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-    position: relative;
-    z-index: 2;
-}
-
 .div1 {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
 }
+
+/* 
+.parent {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+} */
+
+
+
+.fotomuka {
+    position: relative;
+    max-width: 450px;
+    height: auto;
+    border-radius: 5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    z-index: 0;
+}
+
 
 .div2 {
     display: flex;
@@ -588,45 +469,3 @@ nav a {
     background-color: #7dbdb2;
 }
 
-/* ============= */
-
-/* Demo Content Styles */
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.feature-card {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 25px;
-    flex: 1;
-    min-width: 250px;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.feature-card i {
-    font-size: 2.5rem;
-    color: #fff956;
-    margin-bottom: 15px;
-}
-
-.feature-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #fff956;
-}
-
-.footer {
-    text-align: center;
-    padding: 30px;
-    margin-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
