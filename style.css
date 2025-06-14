@@ -76,6 +76,10 @@ header {
     background: #fefefe;
 }
 
+.Arya {
+    font-size: 2.6rem;
+}
+
 @media only screen and (max-width: 1320px) {
     header {
         padding: 0 50px;
@@ -89,6 +93,10 @@ header {
 }
 
 @media only screen and (max-width: 900px) {
+    .Arya {
+        font-size: 1.9rem;
+    }
+
     .hamburger {
         display: block;
         cursor: pointer;
@@ -133,7 +141,13 @@ header {
         display: block;
         margin-left: 1.5vh;
     }
-
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+    }
     .nav-bar {
         height: 0;
         display: block;
@@ -177,6 +191,7 @@ header {
 
 .hero {
     background-color: #3A6D8C;
+    padding-block: 15.7vh;
     display: flex;
     flex-wrap: wrap-reverse;
     width: 100%;
@@ -185,24 +200,6 @@ header {
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-.div1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* 
-.parent {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    width: 100%;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-} */
-
 
 
 .fotomuka {
@@ -214,6 +211,12 @@ header {
     z-index: 0;
 }
 
+.div1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
 .div2 {
     display: flex;
@@ -296,6 +299,14 @@ header {
 @media (max-width: 650px) {
     .garis {
         display: block;
+    }
+
+    .div1 {
+        margin-top: 5vh;
+    }
+
+    .hero {
+        padding-block: 4vh;
     }
 
     .parent {
@@ -468,4 +479,3 @@ header {
     display: flex;
     background-color: #7dbdb2;
 }
-
